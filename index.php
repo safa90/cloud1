@@ -19,7 +19,7 @@ and open the template in the editor.
         
 <?php
 
-require_once 'Zend/Gdata/YouTube.php'; // on charge la librairie YouTube
+require_once 'YouTube.php'; // on charge la librairie YouTube
 
 // fonction permettant d'afficher les informations sur une vidéo
 function printVideoEntry($videoEntry)
