@@ -19,8 +19,24 @@ and open the template in the editor.
         
 <?php
 
-require_once ('YouTube.php'); // on charge la librairie YouTube
+require_once ('YouTube.php');
+require_once ('ClientLogin.php');// on charge la librairie YouTube
 
+
+// configuration et identifiants
+$authenticationURL = 'https://www.google.com/youtube/accounts/ClientLogin';
+$developerKey = 'AI39si6xe2EeUSkg1'; // Clé développeur
+$applicationId = 'tQlU50lowGkYEO4ymSbA73ur4WKmyQbIfJfeIx5J4xe8RSbH0Z4kli7CI8'; // Identifiant de l'application
+$clientId = 'tt94z18Fx5p7TLsgJuVwQ'; // Identifiant Client
+$username = "safa90"; // Login de votre compte YouTube
+$password = "ramzi270590"; // Mot de passe de votre compte YouTube
+
+// authentification via la méthode HTTP
+$httpClient = Zend_Gdata_ClientLogin::getHttpClient(
+    $username,$password,'youtube',null,'MonSiteWeb',null,null,$authenticationURL
+);
+
+$yt = new Zend_Gdata_YouTube($httpClient, $applicationId, $clientId, $developerKey);
 // fonction permettant d'afficher les informations sur une vidéo
 function printVideoEntry($videoEntry)
 {
